@@ -1,0 +1,99 @@
+/* VeriMash brand system — landing-page blue across app and startup.
+   Visual only: do not modify security / transaction JavaScript. */
+:root {
+  --vm-blue: #1c5bf0;
+  --vm-blue-hover: #1248d4;
+  --vm-blue-soft: #eef4ff;
+  --vm-blue-border: #d8e5ff;
+  --vm-ink: #111b30;
+  --vm-muted: #64748b;
+  --vm-surface: #ffffff;
+  --vm-background: #f7f9fd;
+  --vm-border: #e5eaf3;
+}
+html, body { background: var(--vm-background); color: var(--vm-ink); }
+body, button, input, textarea, select { font-family: 'DM Sans', Inter, 'Segoe UI', Arial, sans-serif; }
+/* Consistent app shell. */
+.sidebar {background:#111b30; color:#e6ecf7; border-right:1px solid #233149;}
+.identity {color:#fff;}
+.identity span, .nav-label {color:#94a5c2;}
+.brand-icon {background:var(--vm-blue);color:white;box-shadow:0 7px 20px #1c5bf044;}
+.side-link {color:#aabbd5;}
+.side-link:hover,.side-link.active {background:#203154;color:#fff;}
+.side-link.active {box-shadow:inset 3px 0 #5a91ff;}
+.sidebar-bottom {border-color:#2d3b57;}
+.sidebar-bottom p {color:#9bacc9;}
+.live-dot {background:#2671ff; box-shadow:0 0 0 3px #2671ff1c;}
+.topbar {background:#fff;border-bottom:1px solid var(--vm-border);}
+.breadcrumbs, .breadcrumbs b {color:#536780;}
+.user-avatar {background:#ebf1ff;color:var(--vm-blue);}
+.icon-button {color:var(--vm-blue);}
+.env-chip {border-color:var(--vm-blue-border);color:var(--vm-blue);background:var(--vm-blue-soft);}
+.container {color:var(--vm-ink);}
+.overline, .flow-label, .route-connector, .route-connector>span, .proof-note {color:var(--vm-blue);}
+.pagehead h1, .panel-title h2, .overview-card h2 {color:var(--vm-ink);}
+.pagehead p, .panel-title p {color:var(--vm-muted);}
+.panel,.stat,.test-card {border-color:var(--vm-border);box-shadow:0 4px 18px #152b5010;}
+.panel-tag,.count {background:#eef3fd;color:#385eab;}
+/* Brand controls (semantic error/success styles deliberately preserved). */
+.primary,button.primary {background:var(--vm-blue);color:#fff;box-shadow:0 8px 18px #1c5bf020;}
+.primary:hover,button.primary:hover {background:var(--vm-blue-hover);}
+.primary:focus-visible,.outlined:focus-visible,.side-link:focus-visible,button:focus-visible,a:focus-visible {outline:2px solid #6698ff;outline-offset:3px;}
+.outlined {background:#fff;color:var(--vm-blue);border-color:#ceddf8;}
+.outlined:hover {background:var(--vm-blue-soft);}
+.inputrow textarea, textarea, input, select {accent-color:var(--vm-blue);}
+.inputrow textarea:focus, input:focus, textarea:focus, select:focus {outline-color:var(--vm-blue);border-color:#8eb0ff;}
+.chain-route {background:#f8faff;border-color:var(--vm-blue-border);}
+.chain-a,.chain-b {background:#e8f0ff;color:#1c5bf0;}
+.route-connector .bridge-line {background:#a6bfff;}
+.copy,.table-action {color:var(--vm-blue);}
+.status-badge.online,.journey-state.done {background:#eaf6ee;color:#167547;}
+.status-badge.offline,.journey-state.failed {background:#fff0ee;color:#aa473d;}
+.notice:not(.error), .result:not(.error) {background:#f0f5ff;border-color:#d1e0ff;color:#2351a0;}
+.stat .status-number {color:var(--vm-blue);}
+.transaction-summary {background:#f0f5ff;border-color:#cbdcff;}
+.transaction-summary small, .transaction-summary code {color:#365d9a;}
+.step-circle {background:#edf3ff;border-color:#dbe6fc;color:#547bbf;}
+.journey-step.done .step-circle {background:var(--vm-blue);border-color:var(--vm-blue);}
+.journey-step.done:not(.last):before {background:#b5caff;}
+.journey-step.done .step-top span {color:var(--vm-blue);}
+.step-proof code, td .mono {color:#2359b6;}
+.delivered-chip {color:#196a49;background:#e9f7ef;}
+.test-card {background:#fff;}
+.result.error,.notice.error {background:#fff0ed;color:#9c382f;border-color:#f3c2bc;}
+/* Existing v8 extended frontend sections (if present). */
+.explain-hero {background:linear-gradient(125deg,#fff 38%,#f0f5ff);border-color:var(--vm-blue-border)!important;}
+.mini-flow {border-color:var(--vm-border);background:#fff;}
+.flow-number {background:#e8f0ff!important;color:var(--vm-blue)!important;}
+.reading-tip {border-left-color:var(--vm-blue)!important;background:#f4f8ff!important;}
+.demo-avatar,.demo-step-number {background:#e8f0ff!important;color:var(--vm-blue)!important;}
+.demo-transfer-arrow,.demo-check {color:var(--vm-blue);}
+.demo-intro {border-color:var(--vm-blue-border);}
+.demo-receipt-banner {background:#f0f5ff;border-color:#d1e0ff;color:#16366f;}
+.example-chip:hover {border-color:var(--vm-blue);color:var(--vm-blue);background:var(--vm-blue-soft);}
+.mobile-link.active {color:var(--vm-blue);border-color:var(--vm-blue);}
+/* Smart-startup overlay: same white/blue as landing hero. */
+#verimash-startup {
+  background:radial-gradient(circle at 50% 42%,#f2f6ff 0%,#fff 58%);
+  color:var(--vm-ink);
+}
+#verimash-startup .vm-start-card {
+  background:#fff;
+  border:1px solid #e1eaff;
+  box-shadow:0 24px 80px #153c8417;
+}
+#verimash-startup .vm-start-mark {background:var(--vm-blue);color:#fff;box-shadow:0 8px 24px #1c5bf03a;}
+#verimash-startup .vm-start-brand {color:var(--vm-ink);}
+#verimash-startup .vm-start-eyebrow {color:var(--vm-blue);}
+#verimash-startup h1 {color:var(--vm-ink);}
+#verimash-startup #vm-start-detail {color:#63748e;}
+#verimash-startup .vm-start-indicator span {background:var(--vm-blue);}
+#verimash-startup .vm-start-route>div {background:#f6f9ff;border-color:#dbe5ff;}
+#verimash-startup .vm-start-route strong,#verimash-startup .vm-start-route>span {color:var(--vm-blue);}
+#verimash-startup .vm-start-route small {color:#52647e;}
+#verimash-startup .vm-start-foot {color:#75839b;}
+#verimash-startup .vm-start-trouble {background:#fff3f1;border-color:#f4cac3;}
+#verimash-startup .vm-start-trouble p {color:#a13a32;}
+#verimash-startup #vm-start-retry {background:var(--vm-blue);color:#fff;}
+#verimash-startup #vm-start-retry:hover {background:var(--vm-blue-hover);}
+@media(prefers-reduced-motion:reduce){#verimash-startup .vm-start-indicator span {animation:none;}}
