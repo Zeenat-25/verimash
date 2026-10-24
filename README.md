@@ -279,7 +279,7 @@ All contracts are in [`contracts/`](contracts) and compile with Solidity `0.8.22
 
 | Contract | Path | Role |
 |---|---|---|
-| `HelloWorld` | `contracts/HelloWorld.sol` | One contract deployed twice: the **source application** on Chain A and the **destination application** on Chain B. Built on an open-source messaging router base. On the destination, `_handle` enforces gate approval and writes audit receipts. |
+| `HelloWorld` | `contracts/HelloWorld.sol` | One contract deployed twice: the **source application** on Chain A and the **destination application** on Chain B. On the destination, `_handle` enforces gate approval and writes audit receipts. |
 | `MockMailbox` | `contracts/ChainProofMockImport.sol` (compiles the test mailbox) | Deployed three times: source mailbox (`1000`) and staging mailbox (`2000`) on Chain A, destination mailbox (`2000`) on Chain B. |
 | `ChainProofValidatorGate` | `contracts/ChainProofValidatorGate.sol` | Destination-side threshold attestation. Deployed on Chain B with source chain `31337`, three validators, threshold `2`. |
 
@@ -537,7 +537,7 @@ All items are **planned, not implemented**.
 
 ## Third-Party Licenses
 
-VeriMash is built by Team Proto on top of open-source components. Their copyright notices, license headers, and license terms are retained unchanged and remain with the packages and source files that carry them.
+VeriMash uses the open-source components below. Their copyright notices and license terms remain with the packages and source files that carry them.
 
 | Component | Version | License | Use in VeriMash |
 |---|---|---|---|
@@ -545,7 +545,7 @@ VeriMash is built by Team Proto on top of open-source components. Their copyrigh
 | OpenZeppelin Contracts and Upgradeable | `^4.9.6` | MIT | Dependencies of the messaging library |
 | Hardhat, Ethers.js, and other npm packages | see `package.json` | Per package | Build, test, and runtime tooling |
 
-`contracts/HelloWorld.sol` is adapted from an upstream example application and keeps its original license header (`Apache-2.0`); the validator-gate enforcement and audit receipt logic are VeriMash additions. `contracts/ChainProofValidatorGate.sol` is `Apache-2.0` and `contracts/ChainProofMockImport.sol` is `MIT`, as declared in their SPDX identifiers.
+Contract source files declare their licenses through SPDX identifiers: `HelloWorld.sol` and `ChainProofValidatorGate.sol` are `Apache-2.0`, and `ChainProofMockImport.sol` is `MIT`.
 
 ---
 
