@@ -1,6 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/health", "destination": "https://verimash-api.onrender.com/health" },
-    { "source": "/api/:path*", "destination": "https://verimash-api.onrender.com/api/:path*" }
-  ]
+    "rewrites":  [
+                     {
+                         "source":  "/health",
+                         "destination":  "https://verimash-api.onrender.com/health"
+                     },
+                     {
+                         "source":  "/api/:path*",
+                         "destination":  "https://verimash-api.onrender.com/api/:path*"
+                     }
+                 ]
 }
