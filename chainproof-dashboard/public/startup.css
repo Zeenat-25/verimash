@@ -1,0 +1,24 @@
+#verimash-startup {position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#071927,#102b3b 55%,#103f3b);color:#edf9f7;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;text-align:center;overflow:auto}
+#verimash-startup.vm-start-done{opacity:0;pointer-events:none;transition:opacity .42s ease}
+#verimash-startup .vm-start-card{width:min(100%,530px);padding:46px 36px;border:1px solid #ffffff22;border-radius:22px;background:#ffffff0b;box-shadow:0 30px 90px #0005}
+#verimash-startup .vm-start-mark{width:62px;height:62px;margin:0 auto 12px;display:grid;place-items:center;background:#0c8a7b;border-radius:16px;font-size:38px;line-height:1}
+#verimash-startup .vm-start-brand{font-size:29px;font-weight:800;letter-spacing:-.04em}
+#verimash-startup .vm-start-eyebrow{color:#80c9bf;font-size:10px;letter-spacing:.19em;font-weight:800;margin:5px 0 24px}
+#verimash-startup h1{font-size:clamp(20px,4vw,28px);line-height:1.3;letter-spacing:-.025em;margin:0 0 13px;color:#fff}
+#verimash-startup #vm-start-detail{font-size:14px;min-height:42px;line-height:1.5;color:#bcd2d6;margin:0}
+#verimash-startup .vm-start-indicator{display:flex;justify-content:center;gap:9px;margin:20px 0 28px}
+#verimash-startup .vm-start-indicator span{height:8px;width:8px;background:#20cbb5;border-radius:50%;animation:vmPulse 1.3s ease-in-out infinite}
+#verimash-startup .vm-start-indicator span:nth-child(2){animation-delay:.2s}
+#verimash-startup .vm-start-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes vmPulse{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+#verimash-startup .vm-start-route{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:27px}
+#verimash-startup .vm-start-route>div{display:flex;align-items:center;gap:9px;padding:12px 16px;background:#ffffff0b;border:1px solid #ffffff1c;border-radius:12px}
+#verimash-startup .vm-start-route strong{font-size:15px;color:#5de2cb}
+#verimash-startup .vm-start-route small{font-size:12px;color:#d4e2e3}
+#verimash-startup .vm-start-route>span{font-size:20px;color:#53b2ac}
+#verimash-startup .vm-start-foot{font-size:11px;color:#88a8ad;margin:0}
+#verimash-startup .vm-start-trouble{background:#ef61621a;border:1px solid #f2919160;border-radius:12px;padding:14px;margin:0 0 22px}
+#verimash-startup .vm-start-trouble[hidden]{display:none}
+#verimash-startup .vm-start-trouble p{font-size:13px;color:#f7d8d8;margin:0 0 12px}
+#verimash-startup #vm-start-retry{background:#12a993;border:0;padding:12px 20px;color:#fff;font-weight:700;border-radius:9px;cursor:pointer}
+@media(max-width:500px){#verimash-startup .vm-start-card{padding:32px 18px}#verimash-startup .vm-start-route{gap:10px}#verimash-startup .vm-start-route>div{padding:10px}}

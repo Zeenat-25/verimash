@@ -5,6 +5,7 @@
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>VeriMash | Cross-chain Verification</title>
 <link href="/style.css" rel="stylesheet"/>
+<link href="/startup.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="layout">
@@ -54,4 +55,5 @@
 </div>
 <dialog id="details"><div class="modal-heading"><div><div class="overline">ON-CHAIN AUDIT PROOF</div><h2>Transaction details</h2></div><form method="dialog"><button aria-label="Close dialog" class="close">×</button></form></div><div class="detail-fields" id="detailFields"></div><div class="integrity-tool"><h3>Verify payload integrity</h3><p>Compare a candidate message against the payload hash stored on the destination chain. Editing the text below does not send a transaction.</p><label for="integrityMessage">Candidate message</label><textarea id="integrityMessage" maxlength="300" rows="3"></textarea><button class="outlined" id="integrityButton">Check on-chain hash ↗</button><div class="result" hidden="" id="integrityResult"></div></div><form class="modal-close" method="dialog"><button class="outlined">Close details</button></form></dialog>
 <script defer="" src="/app.js"></script>
+<script defer src="/startup.js"></script>
 </body></html>
