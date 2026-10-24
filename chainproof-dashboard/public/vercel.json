@@ -1,12 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/status",
-      "destination": "https://verimash-api.onrender.com/api/status"
-    },
-    {
-      "source": "/api/send",
-      "destination": "https://verimash-api.onrender.com/api/send"
+      "source": "/api/:path*",
+      "destination": "https://verimash-api.onrender.com/api/:path*"
     }
   ]
 }
