@@ -535,20 +535,6 @@ All items are **planned, not implemented**.
 
 ---
 
-## Third-Party Licenses
-
-VeriMash uses the open-source components below. Their copyright notices and license terms remain with the packages and source files that carry them.
-
-| Component | Version | License | Use in VeriMash |
-|---|---|---|---|
-| `@hyperlane-xyz/core` | `12.2.0` | Apache-2.0 | Router, mailbox-client, and test mailbox contracts |
-| OpenZeppelin Contracts and Upgradeable | `^4.9.6` | MIT | Dependencies of the messaging library |
-| Hardhat, Ethers.js, and other npm packages | see `package.json` | Per package | Build, test, and runtime tooling |
-
-Contract source files declare their licenses through SPDX identifiers: `HelloWorld.sol` and `ChainProofValidatorGate.sol` are `Apache-2.0`, and `ChainProofMockImport.sol` is `MIT`.
-
----
-
 <div align="center">
 
 **Built by Team Proto**
