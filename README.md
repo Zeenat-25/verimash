@@ -23,7 +23,7 @@
 <p>
 A destination-chain smart contract refuses cross-chain messages unless two of three
 authorized validators have signed them, and validators sign only after the backend has matched the
-message to real source-chain transaction evidence. Every step runs as an actual transaction on a test blockchain.
+message to real source-chain transaction evidence. The source dispatch, destination approval, delivery, and receipt are recorded through actual test-chain transactions; source evidence checks and signature collection run off-chain.
 </p>
 
 </div>
@@ -43,7 +43,7 @@ message to real source-chain transaction evidence. Every step runs as an actual 
 
 ## Contents
 
-[Problem](#the-problem) · [Architecture](#architecture) · [Transaction Flow](#transaction-flow) · [Security Architecture](#security-architecture) · [Application Walkthrough](#application-walkthrough) · [Smart Contracts](#smart-contract-architecture) · [Technology Stack](#technology-stack) · [Project Structure](#project-structure) · [Local Installation](#local-installation) · [Cloud Architecture](#live-cloud-architecture) · [Testing](#testing) · [Limitations](#current-limitations) · [Roadmap](#roadmap) · [Third-Party Licenses](#third-party-licenses)
+[Problem](#the-problem) · [Architecture](#architecture) · [Transaction Flow](#transaction-flow) · [Security Architecture](#security-architecture) · [Application Walkthrough](#application-walkthrough) · [Smart Contracts](#smart-contract-architecture) · [Technology Stack](#technology-stack) · [Project Structure](#project-structure) · [Local Installation](#local-installation) · [Cloud Architecture](#live-cloud-architecture) · [Testing](#testing) · [Limitations](#current-limitations) · [Roadmap](#roadmap)
 
 ---
 
@@ -326,7 +326,7 @@ Versions come from `package.json`, `hardhat.config.cts`, and `package-lock.json`
 | Solidity | `0.8.22` | Smart contracts (Hardhat compiler setting) |
 | Hardhat | `^2.22.0` (locked `2.29.1`) | Compilation, local EVM nodes, test runner |
 | Ethers.js | `5.8.0` | Contract calls, signing, receipt and event parsing |
-| Open-source messaging contract library | see [Third-Party Licenses](#third-party-licenses) | Router, mailbox-client, and test mailbox contracts |
+| Messaging contract components | Used in the Solidity contracts | Message routing, mailbox access control, and test-network dispatch/delivery |
 | Hardhat Ethers, Waffle, TypeChain (ethers-v5) | `2.2.3`, `^2.0.6`, `10.2.1` / `6.1.6` | Test and typing tooling |
 | Mocha, Chai | `@types/mocha ^10.0.10`, `chai ^4.5.0` | Test framework and assertions |
 | TypeScript, tsx | `^5.9.0`, `^4.20.0` | Test and Hardhat config execution |
