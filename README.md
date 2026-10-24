@@ -43,7 +43,7 @@ message to real source-chain transaction evidence. Every step runs as an actual 
 
 ## Contents
 
-[Problem](#the-problem) · [Architecture](#architecture) · [Transaction Flow](#transaction-flow) · [Security Architecture](#security-architecture) · [Application Walkthrough](#application-walkthrough) · [Smart Contracts](#smart-contract-architecture) · [Technology Stack](#technology-stack) · [Project Structure](#project-structure) · [Local Installation](#local-installation) · [Cloud Architecture](#live-cloud-architecture) · [Testing](#testing) · [Limitations](#current-limitations) · [Roadmap](#roadmap) · [Attribution](#licensing-and-attribution)
+[Problem](#the-problem) · [Architecture](#architecture) · [Transaction Flow](#transaction-flow) · [Security Architecture](#security-architecture) · [Application Walkthrough](#application-walkthrough) · [Smart Contracts](#smart-contract-architecture) · [Technology Stack](#technology-stack) · [Project Structure](#project-structure) · [Local Installation](#local-installation) · [Cloud Architecture](#live-cloud-architecture) · [Testing](#testing) · [Limitations](#current-limitations) · [Roadmap](#roadmap) · [Third-Party Licenses](#third-party-licenses)
 
 ---
 
@@ -193,7 +193,7 @@ VeriMash enforces four mechanisms. Each is covered by the automated test suite a
 
 **Why callers must be restricted:** if anyone could call the destination application's `handle` function, an attacker could fabricate a "bridged" message without any source transaction.
 
-**How it is enforced:** the Hyperlane `MailboxClient` base class that `HelloWorld` inherits limits `handle` to the configured mailbox.
+**How it is enforced:** the mailbox-client base contract that `HelloWorld` inherits limits `handle` to the configured mailbox.
 
 **Security Lab evidence:** a different local account calls `handle` using `callStatic` (no transaction is broadcast). The lab confirms the revert reason `MailboxClient: sender not mailbox` and that the audit count did not change.
 
@@ -279,8 +279,8 @@ All contracts are in [`contracts/`](contracts) and compile with Solidity `0.8.22
 
 | Contract | Path | Role |
 |---|---|---|
-| `HelloWorld` | `contracts/HelloWorld.sol` | One contract deployed twice: the **source application** on Chain A and the **destination application** on Chain B. Extends Hyperlane's `Router`. On the destination, `_handle` enforces gate approval and writes audit receipts. |
-| `MockMailbox` | `contracts/ChainProofMockImport.sol` (imports the Hyperlane mock) | Deployed three times: source mailbox (`1000`) and staging mailbox (`2000`) on Chain A, destination mailbox (`2000`) on Chain B. |
+| `HelloWorld` | `contracts/HelloWorld.sol` | One contract deployed twice: the **source application** on Chain A and the **destination application** on Chain B. Built on an open-source messaging router base. On the destination, `_handle` enforces gate approval and writes audit receipts. |
+| `MockMailbox` | `contracts/ChainProofMockImport.sol` (compiles the test mailbox) | Deployed three times: source mailbox (`1000`) and staging mailbox (`2000`) on Chain A, destination mailbox (`2000`) on Chain B. |
 | `ChainProofValidatorGate` | `contracts/ChainProofValidatorGate.sol` | Destination-side threshold attestation. Deployed on Chain B with source chain `31337`, three validators, threshold `2`. |
 
 <details>
@@ -293,7 +293,7 @@ All contracts are in [`contracts/`](contracts) and compile with Solidity `0.8.22
 | Threshold (`2`) | `ChainProofValidatorGate` (`threshold`, immutable) |
 | Digest binding to chains, gate address, payload hash, nonce | `ChainProofValidatorGate.getDigest` |
 | Approval required before delivery | `HelloWorld._handle` calls `gate.getDigest` then `gate.approved` |
-| Caller restriction on `handle` | Hyperlane `MailboxClient` (inherited by `Router`) |
+| Caller restriction on `handle` | Mailbox-client base contract (inherited by `HelloWorld`) |
 | Message-level replay rejection | `MockMailbox` (`Mailbox: already delivered`) |
 | Approval replay rejection | `ChainProofValidatorGate.approved` (`Gate: already approved`) |
 | Audit storage | `HelloWorld`: `auditRecorded`, `totalAuditReceipts`, `ChainProofReceipt` event, `verifyAuditReceipt` |
@@ -326,8 +326,7 @@ Versions come from `package.json`, `hardhat.config.cts`, and `package-lock.json`
 | Solidity | `0.8.22` | Smart contracts (Hardhat compiler setting) |
 | Hardhat | `^2.22.0` (locked `2.29.1`) | Compilation, local EVM nodes, test runner |
 | Ethers.js | `5.8.0` | Contract calls, signing, receipt and event parsing |
-| `@hyperlane-xyz/core` | `12.2.0` | `Router`, `MailboxClient`, `MockMailbox` |
-| OpenZeppelin Contracts (and Upgradeable) | `^4.9.6` | Contract dependencies of Hyperlane core |
+| Open-source messaging contract library | see [Third-Party Licenses](#third-party-licenses) | Router, mailbox-client, and test mailbox contracts |
 | Hardhat Ethers, Waffle, TypeChain (ethers-v5) | `2.2.3`, `^2.0.6`, `10.2.1` / `6.1.6` | Test and typing tooling |
 | Mocha, Chai | `@types/mocha ^10.0.10`, `chai ^4.5.0` | Test framework and assertions |
 | TypeScript, tsx | `^5.9.0`, `^4.20.0` | Test and Hardhat config execution |
@@ -345,7 +344,7 @@ verimash/
 ├── contracts/
 │   ├── ChainProofValidatorGate.sol    # 2-of-3 destination validator gate
 │   ├── HelloWorld.sol                 # Source/destination application, audit receipts
-│   └── ChainProofMockImport.sol       # Imports Hyperlane MockMailbox for compilation
+│   └── ChainProofMockImport.sol       # Compiles the test mailbox used by the demo
 ├── chainproof-dashboard/
 │   ├── server.cjs                     # Verification backend and API
 │   ├── hardhat-chain-b.config.cts     # Hardhat config for Blockchain B (chain ID 31338)
@@ -513,7 +512,7 @@ VeriMash is a prototype, and its trust assumptions are part of its design.
 - **Locally configured test validators.** Validator accounts are Hardhat development accounts, and the backend produces their signatures. This demonstrates on-chain threshold enforcement, not independent validator operators.
 - **No real asset movement.** Messages are verified and delivered. No cryptocurrency or tokens are transferred, and no public mainnet is used.
 - **Render Free behavior.** The service may sleep when idle, and restarts recreate chain state. Records are not guaranteed to persist.
-- **Mock messaging infrastructure.** `MockMailbox` is a testing component, not the production Hyperlane protocol.
+- **Mock messaging infrastructure.** `MockMailbox` is a test mailbox implementation, not a production cross-chain messaging network.
 - **No independently decentralized verification.** Further security review and auditing are required before any production use.
 
 Even so, the prototype provides meaningful technical verification. Real transactions execute on separate chains, evidence is matched against actual receipts and events, and the destination contract refuses unapproved messages independently of what the relay claims.
@@ -533,6 +532,20 @@ All items are **planned, not implemented**.
 | Operations | Better infrastructure monitoring |
 | Assurance | Security review and formal auditing |
 | Deployment | Production hardening |
+
+---
+
+## Third-Party Licenses
+
+VeriMash is built by Team Proto on top of open-source components. Their copyright notices, license headers, and license terms are retained unchanged and remain with the packages and source files that carry them.
+
+| Component | Version | License | Use in VeriMash |
+|---|---|---|---|
+| `@hyperlane-xyz/core` | `12.2.0` | Apache-2.0 | Router, mailbox-client, and test mailbox contracts |
+| OpenZeppelin Contracts and Upgradeable | `^4.9.6` | MIT | Dependencies of the messaging library |
+| Hardhat, Ethers.js, and other npm packages | see `package.json` | Per package | Build, test, and runtime tooling |
+
+`contracts/HelloWorld.sol` is adapted from an upstream example application and keeps its original license header (`Apache-2.0`); the validator-gate enforcement and audit receipt logic are VeriMash additions. `contracts/ChainProofValidatorGate.sol` is `Apache-2.0` and `contracts/ChainProofMockImport.sol` is `MIT`, as declared in their SPDX identifiers.
 
 ---
 
