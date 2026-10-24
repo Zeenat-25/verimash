@@ -5,7 +5,17 @@
   const video = document.getElementById('heroVideo');
   const visual = document.querySelector('.hero-visual');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) { video.pause(); return; }
+  if (reduceMotion) { video.pause(); }
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const sections = [...document.querySelectorAll('.section')];
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      }
+    }, {threshold: 0.08});
+    for (const section of sections) { section.classList.add('is-reveal-ready'); observer.observe(section); }
+  }
+  if (reduceMotion) return;
   let activated = false;
   video.addEventListener('loadeddata', () => {
     if (!activated && video.videoWidth > 0) {

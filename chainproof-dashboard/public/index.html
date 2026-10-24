@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="VeriMash demonstrates auditable cross-chain message verification using source evidence, two-of-three validator approval, and destination enforcement.">
-  <title>VeriMash â€” Verify Across Chains</title>
+  <meta name="description" content="VeriMash executes and verifies real smart-contract messages across two isolated local EVM test chains using source evidence, two-of-three test-validator approval, and on-chain destination enforcement.">
+  <title>VeriMash &mdash; Verify Across Chains</title>
   <link rel="stylesheet" href="/landing.css">
   <script defer src="/landing.js"></script>
 </head>
@@ -16,17 +16,17 @@
     <nav class="primary-nav" aria-label="Main navigation">
       <a href="#problem">The problem</a><a href="#approach">Our approach</a><a href="#how">How it works</a>
     </nav>
-    <a class="nav-launch" href="/app.html#overview">Open application <span aria-hidden="true">â†—</span></a>
+    <a class="nav-launch" href="/app.html#overview">Open application <span aria-hidden="true">&#8599;</span></a>
   </header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-line"></span> CROSS-CHAIN MESSAGE VERIFICATION</p>
         <h1 id="hero-title">What happens on one chain shouldn't be taken on <em>trust.</em></h1>
-        <p class="hero-intro">VeriMash demonstrates how a message can move from Blockchain A to Blockchain Bâ€”with source evidence checked, validator approval enforced, and an auditable result.</p>
+        <p class="hero-intro">VeriMash executes real smart-contract transactions across two EVM test chains. Every message is checked against source-chain evidence, approved by two of three test validators, and recorded on Blockchain B.</p>
         <div class="hero-buttons">
-          <a class="button-primary" href="/app.html#demo">Launch live demo <span aria-hidden="true">â†—</span></a>
-          <a class="button-text" href="#how">Explore the process <span aria-hidden="true">â†“</span></a>
+          <a class="button-primary" href="/app.html#demo">Launch live demo <span aria-hidden="true">&#8599;</span></a>
+          <a class="button-text" href="#how">Explore the process <span aria-hidden="true">&#8595;</span></a>
         </div>
         <div class="hero-meta"><span class="meta-line"></span> TWO TEST CHAINS <span class="meta-sep">/</span> TWO-OF-THREE VALIDATOR APPROVAL</div>
       </div>
@@ -42,9 +42,9 @@
           <div class="diagram-connector"><div class="moving-dot delay"></div></div>
           <div class="diagram-node"><div class="diagram-stack"><i></i><i></i><i></i></div><span>BLOCKCHAIN B</span></div>
         </div>
-        <div class="visual-caption">A <span>â†’</span> SOURCE EVIDENCE <span>â†’</span> APPROVAL <span>â†’</span> B</div>
+        <div class="visual-caption">A <span>&#8594;</span> SOURCE EVIDENCE <span>&#8594;</span> APPROVAL <span>&#8594;</span> B</div>
       </div>
-      <a class="scroll-cue" href="#problem">SCROLL TO EXPLORE <span aria-hidden="true">â†“</span></a>
+      <a class="scroll-cue" href="#problem">SCROLL TO EXPLORE <span aria-hidden="true">&#8595;</span></a>
     </section>
     <section class="section problem" id="problem">
       <div class="section-index">01 / THE PROBLEM</div>
@@ -53,22 +53,22 @@
     </section>
     <section class="section approach" id="approach">
       <div class="section-index">02 / OUR APPROACH</div>
-      <div class="section-body"><h2>Don't just deliver.<br><span>Verify before accepting.</span></h2><div class="section-side"><p>VeriMash demonstrates a verification-first approach. It begins with a real transaction on a source test chain and checks the transaction receipt, emitted Dispatch event, exact message bytes, and message identifier before delivery proceeds.</p><p>Next, two of three authorized test validators approve the message. The destination application uses an on-chain validator gate to enforce that threshold rather than relying on the relay's claim that a message is approved.</p><p class="section-fine">Once accepted on Blockchain B, the application records an audit receipt that can be examined in VeriMash's Transaction Explorer. This prototype uses a trusted local relay and locally controlled test keys; it is not a trustless bridge or a transfer of real cryptocurrency.</p><a class="inline-link" href="/app.html#workspace">Explore the transaction workspace <span aria-hidden="true">â†—</span></a></div></div>
+      <div class="section-body"><h2>Don't just deliver.<br><span>Verify before accepting.</span></h2><div class="section-side"><p>VeriMash implements a working verification-first flow on two isolated EVM test networks. It begins with a real transaction on a source test chain and checks the transaction receipt, emitted Dispatch event, exact message bytes, and message identifier before delivery proceeds.</p><p>Next, two of three authorized test validators approve the message. The destination application uses an on-chain validator gate to enforce that threshold rather than relying on the relay's claim that a message is approved.</p><p class="section-fine">Once accepted on Blockchain B, the application records an audit receipt that can be examined in VeriMash's Transaction Explorer. The transactions and contract checks really execute on the demo chains. The relay and validator keys are controlled by this prototype; VeriMash is not a production decentralized bridge and does not transfer real cryptocurrency.</p><a class="inline-link" href="/app.html#workspace">Explore the transaction workspace <span aria-hidden="true">&#8599;</span></a></div></div>
       <div class="feature-rule"><span>SOURCE RECEIPT</span><span>2 / 3 VALIDATOR APPROVAL</span><span>DESTINATION AUDIT</span></div>
     </section>
     <section class="section process" id="how">
       <div class="section-index">03 / HOW IT WORKS</div>
       <h2>From event to evidence.</h2>
-      <p class="process-lead">Follow one message from its original on-chain event to an auditable destination result. The live demo shows the evidence behind each completed step.</p>
+      <p class="process-lead">Follow one message from its original on-chain event to an auditable destination result. Each completed stage in the live demo corresponds to actual test-chain transaction evidence; the displayed proof is not a fabricated animation.</p>
       <div class="process-grid">
-        <article><span class="process-number">01</span><div class="process-line"></div><h3>Dispatch on Chain A</h3><p>A demo message is dispatched on Blockchain A. Its transaction produces a receipt and a Dispatch event containing the original message data.</p></article>
+        <article><span class="process-number">01</span><div class="process-line"></div><h3>Dispatch on Chain A</h3><p>A demo message is dispatched on Blockchain A. Its real test-chain transaction produces a receipt and a Dispatch event containing the original message data.</p></article>
         <article><span class="process-number">02</span><div class="process-line"></div><h3>Verify the evidence</h3><p>VeriMash checks the source transaction receipt and verifies that the Dispatch event, message bytes, and message ID agree.</p></article>
         <article><span class="process-number">03</span><div class="process-line"></div><h3>Enforce approval</h3><p>Two of three authorized test validators sign off on the message. The destination validator gate checks the required approval threshold.</p></article>
-        <article><span class="process-number">04</span><div class="process-line"></div><h3>Record on Chain B</h3><p>A trusted local relay submits the approved message to Blockchain B. The destination contract enforces approval and emits an auditable delivery record.</p></article>
+        <article><span class="process-number">04</span><div class="process-line"></div><h3>Record on Chain B</h3><p>The demo&#8217;s trusted local relay submits the approved message to Blockchain B. The destination contract enforces approval and emits an auditable delivery record.</p></article>
       </div>
     </section>
-    <section class="launch-section" id="launch"><div class="section-index">04 / SEE IT IN ACTION</div><h2>Verification is better<br>when you can <em>see it.</em></h2><p>Follow an Alice â†’ Bob message, inspect the receipt, and try the Security Lab with controlled negative tests.</p><a class="button-primary" href="/app.html#demo">Launch VeriMash application <span aria-hidden="true">â†—</span></a><p class="disclaimer">Hackathon demonstration Â· Disposable local EVM networks Â· Trusted relay and test validators Â· No real token transfers</p></section>
+    <section class="launch-section" id="launch"><div class="section-index">04 / SEE IT IN ACTION</div><h2>Verification is better<br>when you can <em>see it.</em></h2><p>Follow an Alice &#8594; Bob message, inspect the receipt, and try the Security Lab with controlled negative tests.</p><a class="button-primary" href="/app.html#demo">Launch VeriMash application <span aria-hidden="true">&#8599;</span></a><p class="disclaimer">Real test-chain execution &middot; Disposable local EVM networks &middot; Trusted relay and test validators &middot; No real token transfers</p></section>
   </main>
-  <footer class="site-footer"><span class="footer-brand">Veri<span>Mash</span>.</span><span>Cross-chain message verification, made inspectable.</span><a href="/app.html#overview">Application â†—</a></footer>
+  <footer class="site-footer"><span class="footer-brand">Veri<span>Mash</span>.</span><span>Cross-chain message verification, made inspectable.</span><a href="/app.html#overview">Application &#8599;</a></footer>
 </body>
 </html>
