@@ -536,12 +536,6 @@ All items are **planned, not implemented**.
 
 ---
 
-## Licensing and Attribution
-
-VeriMash builds on [Hyperlane](https://www.hyperlane.xyz). `contracts/HelloWorld.sol` is derived from Hyperlane's HelloWorld example application and extended with validator-gate enforcement and audit receipts. `@hyperlane-xyz/core` is licensed under Apache-2.0. Source files carry SPDX identifiers: `HelloWorld.sol` and `ChainProofValidatorGate.sol` are `Apache-2.0`; `ChainProofMockImport.sol` is `MIT`. License and attribution notices of Hyperlane and OpenZeppelin remain with those packages.
-
----
-
 <div align="center">
 
 **Built by Team Proto**
