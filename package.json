@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "compile": "hardhat --config hardhat.config.cts compile",
-        "test": "hardhat --config hardhat.config.cts test",
+        "test": "hardhat --config hardhat.config.cts test src/test/chainproof-security-v7.test.ts",
         "start": "node chainproof-dashboard/server.cjs"
     },
     "dependencies": {
